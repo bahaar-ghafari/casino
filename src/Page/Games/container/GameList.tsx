@@ -1,20 +1,30 @@
-import React from "react";
-import Game from "../components/game";
-import { GameProps } from "../@types";
+import React, { useEffect, useState } from "react";
+import { IGame } from "../@types";
+import { getGames } from "Services/gameService";
+import Game from "../Components/Game";
 
-interface GameListProps {
-  games: GameProps[];
-}
+const GameList: React.FC = () => {
+  const [games,setGames] = useState([]);
 
-const GameList: React.FC<GameListProps> = ({ games }) => {
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const gamesData = await getGames();
+        setGames(gamesData);
+      } catch (error) {
+        // Handle error
+      }
+    };
+
+    fetchGames();
+  }, []);
+   console.log('%cGameList.tsx line:21 games', 'color: #007acc;', games);
   return (
     <div>
-      <h1>Games</h1>
-      <ul>
-        {games.map((game) => (
-          <Game key={game.id} {...game}/>
-        ))}
-      </ul>
+      <h3>Games</h3>
+      {games.map((game: IGame) => (
+        <Game key={game.code} {...game} />
+      ))}
     </div>
   );
 };

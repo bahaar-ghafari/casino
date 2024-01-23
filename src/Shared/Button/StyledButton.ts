@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from '@@comeon/Styles/Theme'
+import theme from 'Styles/Theme'
 import { ButtonProps } from './@type'
 
 export const StyledButton = styled.button<ButtonProps>`

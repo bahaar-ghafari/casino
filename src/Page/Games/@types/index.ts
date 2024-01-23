@@ -1,6 +1,7 @@
-export interface GameProps {
-    title: string;
-    explanation: string;
-    iconUrl: string;
-    id:string;
+export interface IGame {
+  "name":string,
+  "description": string
+  "code": string
+  "icon": string
+  "categoryIds": number[]
   }
