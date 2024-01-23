@@ -3,18 +3,11 @@ import theme from 'Styles/Theme'
 import { ButtonProps } from './@type'
 
 export const StyledButton = styled.button<ButtonProps>`
-  box-sizing: boder-box;
   padding: 10px 20px;
-  background-color: ${theme.light};
-  color: ${theme.dark};
+  background-color: ${theme.primary};
+  color: ${theme.secondary};
   border: unset;
-  box-shadow: ${props => (props.$isactive ? theme.boxShadow : 'unset')};
-  border-radius: ${theme.borderRadius};
-  cursor: 'pointer';
   font-size: 16px;
+  font-weight:bold;
   cursor: pointer;
-
-  &:hover {
-    color: ${theme.secondary};
-  }
 `

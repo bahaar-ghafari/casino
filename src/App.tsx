@@ -1,10 +1,10 @@
-import GameList from "./Page/Games/container/GameList";
+import Games from "Page/Games/container/Games";
 
 function App() {
   return (
     <div>
       <header>header</header>
-      <GameList />
+      <Games />
     </div>
   );
 }
