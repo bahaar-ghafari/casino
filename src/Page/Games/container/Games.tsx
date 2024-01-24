@@ -28,7 +28,7 @@ const Games: React.FC = () => {
     const filteredData =
     filter === 0
         ? games
-        : games.filter((item) => item.categoryIds.includes(activeFilter));
+        : games.filter((item) => item.categoryIds.includes(filter));
     setFilteredGames(filteredData);
   };
   return (
