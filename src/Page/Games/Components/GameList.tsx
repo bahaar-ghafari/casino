@@ -1,18 +1,20 @@
 import React from "react";
 import { IGame } from "../@types";
 import Game from "./Game";
-import { GameListContainer } from "./GameListContainer.style";
 
 type GameListProps = {
   games: IGame[];
 };
 const GameList: React.FC<GameListProps> = ({ games }) => {
   return (
-    <GameListContainer>
+    <div>
+      <div role="heading" aria-level={5}>
+        Games
+      </div>
       {games.map((game: IGame) => (
         <Game key={game.code} {...game} />
       ))}
-    </GameListContainer>
+    </div>
   );
 };
 

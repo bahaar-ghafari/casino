@@ -1,8 +1,7 @@
 const theme = {
-  primary: '#000',
-  secondary: '#fff',
-  deactive: '#ccc',
-  divider: '#80808014',
-}
+  dark: "#000",
+  light: "#fff",
+  gray: " #ccc",
+};
 
-export default theme
+export default theme;

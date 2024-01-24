@@ -1,9 +1,10 @@
 import Games from "Page/Games/container/Games";
+import Header from "Page/Header/Header";
 
 function App() {
   return (
     <div>
-      <header>header</header>
+      <Header />
       <Games />
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { IGame } from "../@types";
 import Button from "Shared/Button/Button";
 import { GameItemContainer, GameItemImgContainer } from "./Game.style";
+import ChevronIcon from "Shared/SVGs/ChevronIvon";
 
 const Game: React.FC<IGame> = ({ name, description, icon }) => {
   return (
@@ -15,8 +16,9 @@ const Game: React.FC<IGame> = ({ name, description, icon }) => {
         </div>
         <p>{description}</p>
         <Button>
-          {/* <img src={"right"} alt="right Icon" /> */}
+          {/* onClick={() => comeon.game.launch(name)}*/}
           Play
+          <ChevronIcon direction="right"/>
         </Button>
       </div>
     </GameItemContainer>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledButton } from './StyledButton'
+import { StyledButton } from './Button.style'
 import { ButtonProps } from './@type'
 
 const Button: React.FC<ButtonProps> = ({ children, onClick, ...rest }) => {

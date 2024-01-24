@@ -6,9 +6,10 @@ export const GameItemContainer = styled.div`
   gap: 16px;
   border-top: 1px solid #ccc;
   padding: 1rem 0;
+  font-size:0.75rem;
 
-  &.button {
-    grid-column: 2;
+  & > div > button {
+    float: right;
   }
 `;
 
