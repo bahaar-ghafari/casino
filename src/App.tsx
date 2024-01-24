@@ -1,5 +1,5 @@
 import Games from "Page/Games/container/Games";
-import Header from "Page/Header/Header";
+import Header from "Components/Header/Container/Header";
 
 function App() {
   return (
