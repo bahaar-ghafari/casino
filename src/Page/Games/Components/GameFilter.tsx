@@ -1,45 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FilterItem, FilterItems } from "./GameFilter.style";
+import { ICategories } from "../@types";
+import { getCategories } from "Services/gameService";
 
-const GameFilter = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
+type GameFilterProps = {
+  activeFilter: number;
+  onHandleFilter: (filter: number) => void;
+};
+const GameFilter: React.FC<GameFilterProps> = ({
+  activeFilter,
+  onHandleFilter,
+}) => {
+  const [categories, setCategories] = useState<ICategories[]>([]);
 
-  const handleFilterClick = (filter: string) => {
-    setActiveFilter(filter);
-  };
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const categoriesData = await getCategories();
+        setCategories(categoriesData);
+      } catch (error) {
+        // Handle error
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div>
       <div role="heading" aria-level={5}>
         Categories
       </div>
       <FilterItems>
-        <FilterItem
-          active={activeFilter === "All" ? "true" : "false"}
-          onClick={() => handleFilterClick("All")}
-        >
-          All
-        </FilterItem>
-        <FilterItem
-          active={
-            activeFilter === "VIDEO SLOTS" || activeFilter === "All"
-              ? "true"
-              : "false"
-          }
-          onClick={() => handleFilterClick("VIDEO SLOTS")}
-        >
-          VIDEO SLOTS
-        </FilterItem>
-        <FilterItem
-          active={
-            activeFilter === "SLOT MACHINES" || activeFilter === "All"
-              ? "true"
-              : "false"
-          }
-          onClick={() => handleFilterClick("SLOT MACHINES")}
-        >
-          SLOT MACHINES
-        </FilterItem>
+        {categories?.map(({ id, name }) => (
+          <FilterItem
+            key={id}
+            active={[0, id].includes(activeFilter) ? "true" : "false"}
+            onClick={() => onHandleFilter(id)}
+          >
+            {name}
+          </FilterItem>
+        ))}
       </FilterItems>
     </div>
   );
