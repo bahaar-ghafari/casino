@@ -11,9 +11,9 @@ const Game: React.FC<IGame> = ({ name, description, icon }) => {
         <img src={icon} alt="Game Icon" width="150rem" />
       </GameItemImgContainer>
       <div>
-        <div role="heading" aria-level={5}>
+        <b role="heading" aria-level={5}>
           {name}
-        </div>
+        </b>
         <p>{description}</p>
         <Button>
           {/* onClick={() => comeon.game.launch(name)}*/}

@@ -7,7 +7,8 @@ interface ChevronIconProps extends IconProps {
 }
 
 const ChevronIcon: React.FC<ChevronIconProps> = ({
-  color = theme.gray,
+  color = theme.gray
+  ,
   width = 24,
   height = 24,
   direction = 'right',
