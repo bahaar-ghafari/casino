@@ -1,12 +1,13 @@
 import Games from "Page/Games/container/Games";
 import Header from "Components/Header/Container/Header";
+import { AppContainer } from "./App.style";
 
 function App() {
   return (
-    <div>
+    <AppContainer>
       <Header />
       <Games />
-    </div>
+    </AppContainer>
   );
 }
 

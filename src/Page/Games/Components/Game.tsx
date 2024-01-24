@@ -8,7 +8,7 @@ const Game: React.FC<IGame> = ({ name, description, icon }) => {
   return (
     <GameItemContainer>
       <GameItemImgContainer>
-        <img src={icon} alt="Game Icon" width="150rem" />
+        <img src={icon} alt="Game Icon" width="100%" />
       </GameItemImgContainer>
       <div>
         <b role="heading" aria-level={5}>
