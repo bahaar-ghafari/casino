@@ -6,24 +6,40 @@ import GameFilter from "../Components/GameFilter";
 import { IGame } from "../@types";
 
 const Games: React.FC = () => {
+  const [activeFilter, setActiveFilter] = useState(0);
   const [games, setGames] = useState<IGame[]>([]);
+  const [filteredGames, setFilteredGames] = useState<IGame[]>(games);
 
   useEffect(() => {
-    const fetchGames = async () => {
+    const fetchData = async () => {
       try {
         const gamesData = await getGames();
+        setFilteredGames(gamesData)
         setGames(gamesData);
       } catch (error) {
         // Handle error
       }
     };
-
-    fetchGames();
+    fetchData();
   }, []);
+
+  const handleFilter = (filter: number) => {
+    setActiveFilter(filter);
+    const filteredData =
+    filter === 0
+        ? games
+        : games.filter((item) => item.categoryIds.includes(activeFilter));
+    setFilteredGames(filteredData);
+  };
+  console.log(
+    "%cGames.tsx line:29 activeFilter",
+    "color: #007acc;",
+    activeFilter
+  );
   return (
     <GamesContainer>
-      <GameList games={games} />
-      <GameFilter />
+      <GameList games={filteredGames} />
+      <GameFilter activeFilter={activeFilter} onHandleFilter={handleFilter} />
     </GamesContainer>
   );
 };
