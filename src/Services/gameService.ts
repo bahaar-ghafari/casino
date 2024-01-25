@@ -1,7 +1,5 @@
+import { API_BASE_URL } from "config";
 import { IGame } from "Page/Games/@types";
-
-const API_BASE_URL = "http://localhost:3001";
-
 export const getGames = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/games`, { method: "GET" });
@@ -9,7 +7,7 @@ export const getGames = async () => {
       throw new Error("Failed to fetch games");
     }
 
-    const data:IGame[] = await response.json();
+    const data: IGame[] = await response.json();
     return data;
   } catch (error) {
     console.error("Error fetching games:", error);
@@ -18,7 +16,9 @@ export const getGames = async () => {
 };
 export const getCategories = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/categories`, { method: "GET" });
+    const response = await fetch(`${API_BASE_URL}/categories`, {
+      method: "GET",
+    });
     if (!response.ok) {
       throw new Error("Failed to fetch categories");
     }
