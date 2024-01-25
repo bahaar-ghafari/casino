@@ -1,19 +1,29 @@
 import React from "react";
 import { FilterItem, FilterItems } from "./GameFilter.style";
-import { ICategories } from "../@types";
-import { getCategories } from "Services/gameService";
+import { ICategories, IGame } from "../@types";
+import { getCategories, getGames } from "Services/gameService";
 import useSWR from "swr";
+import useGamesStore from "stores/gamesStore";
+import { apiKeys } from "Constants/apiKeys";
 
-type GameFilterProps = {
-  activeFilter: number;
-  onHandleFilter: (filter: number) => void;
-};
-const GameFilter: React.FC<GameFilterProps> = ({
-  activeFilter,
-  onHandleFilter,
-}) => {
-  const { data: categories } = useSWR<ICategories[]>("games", getCategories);
+const GameFilter: React.FC = () => {
+  const { data: games } = useSWR<IGame[]>(apiKeys.games, getGames);
+  const { data: categories } = useSWR<ICategories[]>(apiKeys.categories, getCategories);
+  const { selectedCategory,setFilteredGames, setSelectedCategory } = useGamesStore();
 
+  
+  const handleFilter = (filter: number) => {
+    setSelectedCategory(filter);
+    if (games) {
+      if (filter === 0) {
+        setFilteredGames(games);
+      } else {
+        setFilteredGames(
+          games?.filter((item) => item.categoryIds.includes(selectedCategory))
+        );
+      }
+    }
+  };
   return (
     <div>
       <div role="heading" aria-level={5}>
@@ -23,8 +33,8 @@ const GameFilter: React.FC<GameFilterProps> = ({
         {categories?.map(({ id, name }) => (
           <FilterItem
             key={id}
-            active={[0, id].includes(activeFilter) ? "true" : "false"}
-            onClick={() => onHandleFilter(id)}
+            active={[0, id].includes(selectedCategory) ? "true" : "false"}
+            onClick={() => handleFilter(id)}
           >
             {name}
           </FilterItem>
