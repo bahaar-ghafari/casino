@@ -2,19 +2,19 @@ import { IGame } from "Page/Games/@types";
 import { create } from "zustand";
 
 interface GamesStore {
-  filterdGames: IGame[];
+  filteredGames: IGame[] | undefined;
   selectedCategory: number;
   searchQuery: string;
-  setFilteredGames: (games: IGame[]) => void;
+  setFilteredGames: (games: IGame[] | undefined) => void;
   setSelectedCategory: (category: number) => void;
   setSearchQuery: (query: string) => void;
 }
 
 const useGamesStore = create<GamesStore>((set) => ({
-  filterdGames: [],
+  filteredGames: [],
   selectedCategory: 0,
   searchQuery: "",
-  setFilteredGames: (games) => set({ filterdGames: games }),
+  setFilteredGames: (games) => set({ filteredGames: games }),
   setSelectedCategory: (category) => set({ selectedCategory: category }),
   setSearchQuery: (query) => set({ searchQuery: query }),
 }));
