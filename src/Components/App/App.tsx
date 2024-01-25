@@ -1,9 +1,10 @@
 import Header from "Components/Header/Container/Header";
 import { AppContainer } from "./App.style";
 import { SWRConfig } from "swr";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Navigate } from "react-router-dom";
 import ComeonRoutes from "Components/Routings/ComeonRoutes";
 import { useAuthStore } from "stores/authStore";
+import { RoutePaths } from "Constants/routes";
 
 function App() {
   // Set global SWR configuration
@@ -16,7 +17,8 @@ function App() {
     <AppContainer>
       <SWRConfig value={swrConfig}>
         <BrowserRouter>
-         {user && <Header />}
+          {!user && <Navigate to={RoutePaths.Login} replace={true} />}
+          {user && <Header />}
           <ComeonRoutes />
         </BrowserRouter>
       </SWRConfig>
