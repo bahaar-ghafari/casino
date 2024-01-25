@@ -3,41 +3,34 @@ import Button from "Shared/Button/Button";
 import ChevronIcon from "Shared/SVGs/ChevronIvon";
 import { ProfileContainer, ProfileImage, ProfileInfo } from "./Profile.style";
 import { useAuthStore } from "stores/authStore";
+import { useNavigate } from "react-router-dom";
+import { RoutePaths } from "Constants/routes";
 
 export const Profile: React.FC = () => {
-  const user = {
-    name: "Rebecka Awesome",
-    avatar: "images/avatar/rebecka.jpg",
-    event: "Last seen gambling on Starburst.",
-    password: "secret",
-  };
-  const userName = "rebeca";
-  const { isLoggedIn, logout } = useAuthStore();
-  const handleAuth = () => {
-    if (isLoggedIn) {
-      logout(userName);
-    } else {
-      //go to login page
+  const { user, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    if (user) {
+      const result = await logout(user?.username);
+      if (result.status === "success") navigate(RoutePaths.Login);
     }
   };
   return (
     <div>
       <ProfileContainer>
-        {isLoggedIn && (
-          <>
-            <ProfileImage>
-              <img src={user?.avatar} alt={user?.name} />
-            </ProfileImage>
+        <ProfileImage>
+          <img src={user?.avatar} alt={user?.name} />
+        </ProfileImage>
 
-            <ProfileInfo>
-              <div>{user?.name}</div>
-              <div>{user?.event}</div>
-            </ProfileInfo>
-          </>
-        )}
+        <ProfileInfo>
+          <div>{user?.name}</div>
+          <div>{user?.event}</div>
+        </ProfileInfo>
       </ProfileContainer>
-      <Button onClick={() => handleAuth()}>
-        <ChevronIcon direction="left" /> {isLoggedIn ? "Log Out" : "Log In"}
+      <Button onClick={() => handleLogout()}>
+        <ChevronIcon direction="left" />
+        Log Out
       </Button>
     </div>
   );

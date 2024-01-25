@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { Container, FormContainer, Input, Label } from "./Login.style";
 import Button from "Shared/Button/Button";
+import { useAuthStore } from "stores/authStore";
+import { useNavigate } from "react-router-dom";
+import { RoutePaths } from "Constants/routes";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleLogin = () => {
-    // Implement your login logic here
-    console.log("Logging in with:", username, password);
+  const { login } = useAuthStore();
+  const navigate = useNavigate();
+  const handleLogin = async () => {
+    const result = await login(username, password);
+    if (result.status === 'success') navigate(RoutePaths.Home);
   };
 
   return (

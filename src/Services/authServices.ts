@@ -1,5 +1,4 @@
 import { API_BASE_URL } from "config";
-import { loginRes } from "./@types";
 
 export const logIn = async (username: string, password: string) => {
   try {
@@ -16,11 +15,10 @@ export const logIn = async (username: string, password: string) => {
     });
     if (!response.ok) {
       //TODO
-      throw new Error("Failed to login");
+      console.error("Failed to login");
     }
+    const data = await response.json();
 
-    const data = await response;
-    console.log("%cauthServices.ts line:28 data", "color: #007acc;", data);
     return data;
   } catch (error) {
     console.error("Error fetching games:", error);
@@ -40,11 +38,9 @@ export const logOut = async (username: string) => {
         username,
       }),
     });
-    const res = response as unknown  as loginRes;
+    const data = await response.json();
 
-    const data = await res.status ;
-    if(data === 'success') return true
-    return false;
+    return data;
   } catch (error) {
     console.error("Error fetching games:", error);
     throw error;

@@ -1,24 +1,30 @@
 import { logIn, logOut } from "Services/authServices";
 import { create } from "zustand";
+import { TloginRes, TlogoutRes } from "./@types";
+import { IUser } from "Components/Header/@types";
 
 interface AuthStore {
-  isLoggedIn: boolean;
-  login: (username: string, password: string) => void;
-  logout: (username: string) => void;
+  user: IUser | null;
+  login: (username: string, password: string) => Promise<TloginRes>;
+  logout: (username: string) => Promise<TlogoutRes>;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
-  isLoggedIn: false,
+  user: null,
   login: async (username, password) => {
-    const isSuccessFull = await logIn(username, password);
-    if (isSuccessFull) {
-      set({ isLoggedIn: true });
+    const data: TloginRes = await logIn(username, password);
+    if (data.status === "success") {
+      set({ user: data.player });
     }
+    return data;
   },
   logout: async (username: string) => {
-    const isSuccessFull = await logOut(username);
-    if (isSuccessFull) {
-      set({ isLoggedIn: false });
+    const data: TlogoutRes = await logOut(username);
+
+    if (data.status === 'success') {
+      set({ user: null });
     }
+    console.log("%cauthStore.ts line:31 data", "color: #007acc;", data);
+    return data;
   },
 }));
