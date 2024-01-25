@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FilterItem, FilterItems } from "./GameFilter.style";
 import { ICategories } from "../@types";
 import { getCategories } from "Services/gameService";
+import useSWR from "swr";
 
 type GameFilterProps = {
   activeFilter: number;
@@ -11,19 +12,8 @@ const GameFilter: React.FC<GameFilterProps> = ({
   activeFilter,
   onHandleFilter,
 }) => {
-  const [categories, setCategories] = useState<ICategories[]>([]);
+  const { data: categories } = useSWR<ICategories[]>("games", getCategories);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const categoriesData = await getCategories();
-        setCategories(categoriesData);
-      } catch (error) {
-        // Handle error
-      }
-    };
-    fetchData();
-  }, []);
   return (
     <div>
       <div role="heading" aria-level={5}>
