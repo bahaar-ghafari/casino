@@ -1,7 +1,7 @@
 import { IGame } from "Page/Games/@types";
 import { create } from "zustand";
 
-interface GamesStore {
+export interface GamesStore {
   filteredGames: IGame[] | undefined;
   selectedGame: string | null;
   selectedCategory: number;

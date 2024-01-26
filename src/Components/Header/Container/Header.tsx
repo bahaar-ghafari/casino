@@ -5,7 +5,7 @@ import { HeaderContainer } from "./Header.style";
 
 const Header: React.FC = () => {
   return (
-    <HeaderContainer>
+    <HeaderContainer data-testid='header'>
       <Profile />
       <SearchBar />
     </HeaderContainer>

@@ -14,7 +14,7 @@ Welcome to the Casino Project! This is a web application developed to provide an
 - [Technologies Used](#technologies-used)
 - [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
+- [test](#test)
 - [License](#license)
 
 ## Getting Started
@@ -74,9 +74,19 @@ User data, preferences, and login status are stored locally using modern web tec
 - Use filters and search to find specific games.
 - Enjoy an immersive casino gaming experience!
 
-## Contributing
+## test
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to submit a pull request or open an issue.
+To ensure the reliability of the project, we've included a set of tests. Follow these steps to run the tests:
+
+- **Running Tests**
+Execute the following command to run the tests using Jest.
+
+`yarn test`
+
+- **Viewing Coverage Report:**
+
+After running the command, Jest will generate a coverage directory in your project. Inside the coverage directory, you'll find an lcov-report directory. Open the index.html file in a browser:
+- [`coverage/lcov-report/index.html`]
 
 ## License
 

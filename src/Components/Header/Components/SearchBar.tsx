@@ -13,6 +13,7 @@ const SearchBar: React.FC = () => {
       <SearchInput
         type="text"
         placeholder="Search Game"
+        data-testid='search-input'
         value={searchQuery}
         onChange={handleSearch}
       />
