@@ -1,14 +1,16 @@
 import React from "react";
 import Button from "Shared/Button/Button";
-import ChevronIcon from "Shared/SVGs/ChevronIvon";
+import ChevronIcon from "Shared/SVGs/ChevronIcon";
 import { ProfileContainer, ProfileImage, ProfileInfo } from "./Profile.style";
 import { useAuthStore } from "stores/authStore";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "Constants/routes";
+import { getUserData } from "Helpers/getUserData";
 
 export const Profile: React.FC = () => {
-  const { user, logout } = useAuthStore();
+  const { logout } = useAuthStore();
   const navigate = useNavigate();
+  const user = useAuthStore().user || getUserData();
 
   const handleLogout = async () => {
     if (user) {

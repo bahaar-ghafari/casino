@@ -15,6 +15,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
     const data: TloginRes = await logIn(username, password);
     if (data.status === "success") {
       set({ user: data.player });
+      localStorage.setItem('user', JSON.stringify(data.player))
     }
     return data;
   },
@@ -23,8 +24,8 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
     if (data.status === 'success') {
       set({ user: null });
+      localStorage.removeItem('user')
     }
-    console.log("%cauthStore.ts line:31 data", "color: #007acc;", data);
     return data;
   },
 }));
