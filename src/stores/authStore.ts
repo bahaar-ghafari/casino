@@ -2,7 +2,8 @@ import { logIn, logOut } from "Services/authServices";
 import { create } from "zustand";
 import { TloginRes, TlogoutRes } from "./@types";
 import { IUser } from "Components/Header/@types";
-import { persist, createJSONStorage } from 'zustand/middleware'
+import { persist, createJSONStorage } from "zustand/middleware";
+import { toast } from "react-toastify";
 
 interface AuthStore {
   user: IUser | null;
@@ -18,21 +19,25 @@ export const useAuthStore = create<AuthStore>()(
         const data: TloginRes = await logIn(username, password);
         if (data.status === "success") {
           set({ user: data.player });
+        } else {
+          toast.error(data.error);
         }
         return data;
       },
       logout: async (username: string) => {
         const data: TlogoutRes = await logOut(username);
-    
-        if (data.status === 'success') {
+
+        if (data.status === "success") {
           set({ user: null });
+        } else {
+          toast.error(data.error);
         }
         return data;
       },
     }),
     {
-      name: 'user-storage', // name of the item in the storage (must be unique)
+      name: "user-storage", // name of the item in the storage (must be unique)
       storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
-    },
-  ),
-)
+    }
+  )
+);

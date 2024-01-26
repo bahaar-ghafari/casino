@@ -13,11 +13,13 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const handleLogin = async () => {
     const result = await login(username, password);
-    if (result.status === "success") navigate(RoutePaths.Home);
+    if (result.status === "success") {
+      navigate(RoutePaths.Home);
+    }
   };
 
   return (
-    <Container sata-testid='login'>
+    <Container sata-testid="login">
       <LogoIcon />
       <FormContainer>
         <Label>Username</Label>

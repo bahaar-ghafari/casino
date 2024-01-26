@@ -13,10 +13,6 @@ export const logIn = async (username: string, password: string) => {
         password,
       }),
     });
-    if (!response.ok) {
-      //TODO
-      console.error("Failed to login");
-    }
     const data = await response.json();
 
     return data;

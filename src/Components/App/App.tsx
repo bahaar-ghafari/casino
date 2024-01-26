@@ -6,6 +6,7 @@ import ComeonRoutes from "Components/Routings/ComeonRoutes";
 import { RoutePaths } from "Constants/routes";
 import { useAuthStore } from "stores/authStore";
 import ErrorBoundary from "Components/ErrorBoundary/Container/ErrorBoundary";
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             {!user && <Navigate to={RoutePaths.Login} replace={true} />}
             {user && <Header />}
             <ComeonRoutes />
+            <ToastContainer />
           </BrowserRouter>
         </SWRConfig>
       </ErrorBoundary>

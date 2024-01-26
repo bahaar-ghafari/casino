@@ -3,14 +3,9 @@ import { IGame } from "Page/Games/@types";
 export const getGames = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/games`, { method: "GET" });
-    if (!response.ok) {
-      throw new Error("Failed to fetch games");
-    }
-
     const data: IGame[] = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching games:", error);
     throw error;
   }
 };
