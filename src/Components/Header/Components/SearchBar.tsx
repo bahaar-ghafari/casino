@@ -1,5 +1,5 @@
 import React from "react";
-import SearchIcon from "Shared/SVGs/SearchIcon";
+import SearchIcon from "Shared/icons/SearchIcon";
 import { SearchContainer, SearchInput } from "./SearchBar.style";
 import useGamesStore from "stores/gamesStore";
 

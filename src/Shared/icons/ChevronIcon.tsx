@@ -3,17 +3,32 @@ import { IconProps } from './@types';
 import theme from 'Styles/Theme';
 
 interface ChevronIconProps extends IconProps {
-  direction: 'left' | 'right';
+  direction: 'left' | 'right' | 'top' | 'bottom';
 }
 
 const ChevronIcon: React.FC<ChevronIconProps> = ({
-  color = theme.gray
-  ,
+  color = theme.gray,
   width = 24,
   height = 24,
   direction = 'right',
 }) => {
-  const rotation = direction === 'left' ? 'rotate(180, 896, 896)' : '';
+  let rotation = '';
+
+  switch (direction) {
+    case 'left':
+      rotation = 'rotate(180, 896, 896)';
+      break;
+    case 'right':
+      // No rotation needed for 'right' direction
+      break;
+    case 'top':
+      rotation = 'rotate(-90, 896, 896)';
+      break;
+    case 'bottom':
+      rotation = 'rotate(90, 896, 896)';
+      break;
+    default:
+  }
 
   return (
     <svg

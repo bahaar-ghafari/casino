@@ -2,7 +2,7 @@ import React from "react";
 import { IGame } from "../@types";
 import Button from "Shared/Button/Button";
 import { GameItemContainer, GameItemImgContainer } from "./Game.style";
-import ChevronIcon from "Shared/SVGs/ChevronIcon";
+import ChevronIcon from "Shared/icons/ChevronIcon";
 import { findKeyByValue } from "Helpers/findKeyByValue";
 import useGamesStore from "stores/gamesStore";
 import { useNavigate } from "react-router-dom";

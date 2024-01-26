@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "Shared/Button/Button";
-import ChevronIcon from "Shared/SVGs/ChevronIcon";
+import ChevronIcon from "Shared/icons/ChevronIcon";
 import { ProfileContainer, ProfileImage, ProfileInfo } from "./Profile.style";
 import { useAuthStore } from "stores/authStore";
 import { useNavigate } from "react-router-dom";

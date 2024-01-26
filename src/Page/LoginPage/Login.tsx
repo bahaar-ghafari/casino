@@ -4,7 +4,7 @@ import Button from "Shared/Button/Button";
 import { useAuthStore } from "stores/authStore";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "Constants/routes";
-import LogoIcon from "Shared/SVGs/LogoIcon";
+import LogoIcon from "Shared/icons/LogoIcon";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
