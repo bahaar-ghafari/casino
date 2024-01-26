@@ -6,6 +6,7 @@ import ComeonRoutes from "Components/Routings/ComeonRoutes";
 import { RoutePaths } from "Constants/routes";
 import getUserData from "Helpers/getUserData";
 import { useAuthStore } from "stores/authStore";
+import ErrorBoundary from "Components/ErrorBoundary/Container/ErrorBoundary";
 
 function App() {
   // Set global SWR configuration
@@ -16,13 +17,15 @@ function App() {
   const user = useAuthStore().user || getUserData();
   return (
     <AppContainer>
-      <SWRConfig value={swrConfig}>
-        <BrowserRouter>
-          {!user && <Navigate to={RoutePaths.Login} replace={true} />}
-          {user && <Header />}
-          <ComeonRoutes />
-        </BrowserRouter>
-      </SWRConfig>
+      <ErrorBoundary>
+        <SWRConfig value={swrConfig}>
+          <BrowserRouter>
+            {!user && <Navigate to={RoutePaths.Login} replace={true} />}
+            {user && <Header />}
+            <ComeonRoutes />
+          </BrowserRouter>
+        </SWRConfig>
+      </ErrorBoundary>
     </AppContainer>
   );
 }

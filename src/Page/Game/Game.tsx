@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useGamesStore from "stores/gamesStore";
 import { GameContainer } from "./Game.style";
 
-const GameComponent: React.FC = () => {
+const Game: React.FC = () => {
   const { selectedGame, setSelectedGame } = useGamesStore();
   const navigate = useNavigate();
   const { gameName } = useParams<{ gameName: string }>();
@@ -22,6 +22,7 @@ const GameComponent: React.FC = () => {
     <GameContainer>
       <Button onClick={handleBack}>Back</Button>
       <iframe
+        data-testid="GameFrame"
         title={`Game: ${selectedGame}`}
         src={selectedGame ? games[selectedGame]?.src : gameName}
         frameBorder="0"
@@ -33,4 +34,4 @@ const GameComponent: React.FC = () => {
   );
 };
 
-export default GameComponent;
+export default Game;

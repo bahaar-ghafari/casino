@@ -17,7 +17,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Container sata-testid='login'>
       <LogoIcon />
       <FormContainer>
         <Label>Username</Label>
