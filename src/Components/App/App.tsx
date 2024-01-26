@@ -4,9 +4,9 @@ import { SWRConfig } from "swr";
 import { BrowserRouter, Navigate } from "react-router-dom";
 import ComeonRoutes from "Components/Routings/ComeonRoutes";
 import { RoutePaths } from "Constants/routes";
-import getUserData from "Helpers/getUserData";
 import { useAuthStore } from "stores/authStore";
 import ErrorBoundary from "Components/ErrorBoundary/Container/ErrorBoundary";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   // Set global SWR configuration
@@ -14,7 +14,7 @@ function App() {
     refreshInterval: 10 * 60 * 1000, // 10 minutes in milliseconds
     revalidateOnFocus: false,
   };
-  const user = useAuthStore().user || getUserData();
+  const user = useAuthStore().user;
   return (
     <AppContainer>
       <ErrorBoundary>
