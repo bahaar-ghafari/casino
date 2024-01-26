@@ -6,7 +6,6 @@ import ChevronIcon from "Shared/SVGs/ChevronIcon";
 import { findKeyByValue } from "Helpers/findKeyByValue";
 import useGamesStore from "stores/gamesStore";
 import { useNavigate } from "react-router-dom";
-import { RoutePaths } from "Constants/routes";
 
 const GameItem: React.FC<IGame> = ({ name, description, icon }) => {
   const { setSelectedGame } = useGamesStore();
@@ -14,7 +13,7 @@ const GameItem: React.FC<IGame> = ({ name, description, icon }) => {
 
   const launchGame = (name: string) => {
     setSelectedGame(findKeyByValue(name));
-    navigate(RoutePaths.Game)
+    navigate("/game/:" + findKeyByValue(name));
   };
   return (
     <GameItemContainer>

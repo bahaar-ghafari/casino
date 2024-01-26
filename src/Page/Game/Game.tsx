@@ -3,39 +3,33 @@
 import { games } from "Constants/games";
 import Button from "Shared/Button/Button";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useGamesStore from "stores/gamesStore";
+import { GameContainer } from "./Game.style";
 
 const GameComponent: React.FC = () => {
-  const { selectedGame } = useGamesStore();
+  const { selectedGame, setSelectedGame } = useGamesStore();
   const navigate = useNavigate();
+  const { gameName } = useParams<{ gameName: string }>();
+  console.log("%cGame.tsx line:14 gameName", "color: #007acc;", gameName);
   const handleBack = () => {
     navigate(-1);
   };
-  console.log(
-    "%cGame.tsx line:15 selectedGame",
-    "color: #007acc;",
-    selectedGame
-  );
-  console.log(
-    "%cGame.tsx line:20 games[selectedGame]?.src",
-    "color: #007acc;",
-    games[selectedGame ?? ""]?.src
-  );
-  console.log("%cGame.tsx line:25 games", "color: #007acc;", games);
-  if (!selectedGame) return null;
+  if (!selectedGame && gameName) {
+    setSelectedGame(gameName);
+  }
   return (
-    <div>
+    <GameContainer>
       <Button onClick={handleBack}>Back</Button>
       <iframe
         title={`Game: ${selectedGame}`}
-        src={games[selectedGame]?.src}
+        src={selectedGame ? games[selectedGame]?.src : gameName}
         frameBorder="0"
         width="640px"
         height="480px"
         scrolling="no"
       />
-    </div>
+    </GameContainer>
   );
 };
 
