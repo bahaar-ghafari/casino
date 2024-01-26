@@ -1,167 +1,83 @@
-![comeon-javascript-test-site](example.png)
-# comeon-javascript-test
+# Casino Project
 
-Applicant's test for Javascript coders.
+Welcome to the Casino Project! This is a web application developed to provide an immersive gaming experience. Explore a variety of games, enjoy exciting features, and have fun in the world of online casino gaming.
 
-## Assignment Overview
+## Table of Contents
 
-The assignment is to use Javascript to tie together existing HTML and data to create a minimal, working casino website.
+- [Getting Started](#getting-started)
+- [Features](#features)
+- [Game Listing](#game-listing)
+- [Categories](#categories)
+- [Filtering and Search](#filtering-and-search)
+- [User Authentication](#user-authentication)
+- [Local Storage](#local-storage)
+- [Technologies Used](#technologies-used)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-Basic HTML, CSS, images and JSON data is provided, however, feel free to impress by changing and enhancing any of these parts for an even better experience!
+## Getting Started
 
-Your mission is to provide the Javascript code that makes the parts work as described, below.
-**Feel free to use any other openly available library for validation, templating, dependency injection, etc.**
+To get started with the Casino Project, follow the instructions in the [Setup and Installation](#setup-and-installation) section. Once set up, you can explore the various features and games available on the platform.
 
-## Assignment Criteria
+## Features
 
-We want to see how you approach and solve a problem, as well as look at code style and quality.
-Do take your time to do it right, rather than fast.
-Extra effort to improve on the "website" will be noted. :)
+- **Game Listing:** Browse through a collection of exciting casino games.
+- **Categories:** Games are organized into different categories for easy navigation.
+- **Filtering and Search:** Quickly find your favorite games using filters and search functionality.
+- **User Authentication:** Log in to access personalized features and preferences.
+- **Local Storage:** User data is securely stored locally for a seamless experience.
 
-While the test is primarily focused on Javascript, by all means use or change the HTML or CSS when that makes sense. We expect the app to be functional across various devices a.k.a responsive.
+## Game Listing
 
-Be prepared to discuss your choices and code when delivered. We would also expect you to answer on how to extend the application to include more features and functionality.
+The Casino Project offers a diverse range of games, each with its own unique theme and gameplay. From classic slots to modern video games, there's something for every gaming enthusiast.
 
-These parts needs all to be completed for the assignment to be complete:
+## Categories
 
-### Login functionality
+Games are categorized into different genres, making it easier for users to discover new and exciting options. Explore categories such as "All," "Video Slots," and "Slot Machines."
 
-* Connect the login form to the /login ajax call.
-* On valid username/password, transition to the games list screen.
-* On invalid username/password, provide feedback and allow to try again.
+## Filtering and Search
 
-### Log out functionality
+Utilize the filtering and search features to narrow down your game choices. Whether you have a specific game in mind or want to explore based on categories, the platform makes it easy.
 
-* Connect the log out button to the /logout ajax call.
-* On valid log out, transition to login screen with empty input fields.
+## User Authentication
 
-### Games list screen
+Log in to the Casino Project to unlock personalized features, save preferences, and track your gaming history. The authentication system ensures a secure and tailored experience for each user.
 
-* Requires user to be logged in
-* List all games from the /games ajax call.
-* List categories from /categories ajax call.
-* Provide functionality for filtering by typing.
-* Provide functionality to filter by category.
-* Make it possible to start a game by clicking on the play icon.
+## Local Storage
 
-### Game play screen
+User data, preferences, and login status are stored locally using modern web technologies. This ensures a smooth experience, even when reloading the page or navigating between different sections.
 
-* Requires user to be logged in
-* Load the selected game via the provided API
-* Provide a way to go back to the Games list screen
+## Technologies Used
 
-### Setup mock api
-```javascript
-npm install -g json-server
-```
+- **React:** Chosen for its component-based architecture and ease of building dynamic user interfaces.
 
-```javascript
-json-server --watch mock/mock-data.json --port 3001 --middlewares mock/mock-api.js
-```
+- **TypeScript:** Introduced for static typing, improved code readability.
 
-Update: Use json-server version other than latest or alpha for example 0.17.3 or lower.
+- **Zustand:** Utilized for state management due to its simplicity, lightweight nature, and ease of integration with React and good option for dynamic states.
 
-## API
-There are four methods on the API: login, logout, games, and categories.
+- **SWR (Stale-While-Revalidate):** Integrated for efficient data fetching, providing a seamless user experience with minimal latency,Caching( Caches API responses intelligently, balancing between displaying stale data immediately and revalidating in the background for the latest updates) and Error Handling(Offers built-in error handling capabilities, making it easy to manage and respond to data-fetching errors)
 
-### Login
-Path: /login
+- **Styled Components:** Selected for styling components with a focus on modularity, maintainability, and the ability to use JavaScript to style components.
 
-Will give you player information.
-It is possible to login with three accounts:
+## Setup and Installation
 
-```
-username: rebecka
-password: secret
+1. Clone the repository.
+2. Install dependencies using `yarn install`.
+3. Run the development server with `yarn start`.
 
-username: eric
-password: dad
+## Usage
 
-username: stoffe
-password: rock
-```
+- Navigate through the platform to explore games.
+- Log in to access personalized features.
+- Use filters and search to find specific games.
+- Enjoy an immersive casino gaming experience!
 
-##### Request
-```javascript
-fetch('http://localhost:3001/login', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: 'rebecka',
-                password: 'secret'
-            })
-        }
-);
-```
+## Contributing
 
-##### Response
-```javascript
-{
-	status: 'success',
-	player: {
-            name: 'Rebecka Awesome',
-            avatar: 'images/avatar/rebecka.jpg',
-            event: 'Last seen gambling on Starburst.'            
-    }
-}
-```
+Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to submit a pull request or open an issue.
 
-### Log out
-Path: /logout
+## License
 
-Use the current player's username.
-
-##### Request
-```javascript
-fetch('http://localhost:3001/logout', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: 'rebecka'
-            })
-        }
-);
-```
-
-### Games and Categories
-These methods are located on paths /games and /categories.
-
-Please explore the response of these methods.
-```javascript
-fetch('http://localhost:3001/games', { method: 'get' });
-```
-
-
-## Loading a game
-
-We have written an API for loading the games. Here's a simple example of how to load a game through our API:
-
-```javascript
-comeon.game.launch('feastingfox');
-```
-
-It basically takes a game code as an in parameter.
-The div with id game-launch will be replaced with an object tag that loads the game.
-
-## More info
-
-- Use of React is encouraged.
-- Use of [jQuery](https://jquery.com/) is discouraged. 
-- External libraries used in this test: [Semantic UI](http://semantic-ui.com/), [json-server](https://github.com/typicode/json-server)
-
-## Found a bug?
-
-Pull requests welcome, and maybe [we have a job for you](http://jobs.comeon.com/)? :)
-
-## How to Submit the Home Assignment
-We would prefer that you push the code to a git repo and send us the link, but you could also send us your code in a compressed file in an email.
-
-## QuickSpin Games
-
-All of the linked games and their media files and descriptions are properties of QuickSpin AB and can be found publicly on their web site at https://quickspin.com/
+This project is licensed under the [MIT License](LICENSE).
