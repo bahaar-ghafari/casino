@@ -1,6 +1,6 @@
 import React from "react";
 import { FilterItem, FilterItems } from "./GameFilter.style";
-import { ICategories, IGame } from "../@types";
+import { ICategories, IGame } from "../../Page/Games/@types";
 import { getCategories, getGames } from "Services/gameService";
 import useSWR from "swr";
 import useGamesStore from "stores/gamesStore";
@@ -26,9 +26,9 @@ const GameFilter: React.FC = () => {
   };
   return (
     <div>
-      <div role="heading" aria-level={5}>
+      <b>
         Categories
-      </div>
+      </b>
       <FilterItems>
         {categories?.map(({ id, name }) => (
           <FilterItem

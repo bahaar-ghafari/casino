@@ -21,9 +21,9 @@ const GameList: React.FC = () => {
   }, [searchQuery, selectedCategory, games, setFilteredGames]);
   return (
     <div>
-      <div role="heading" aria-level={5}>
+      <b>
         Games
-      </div>
+      </b>
       {filteredGames?.map((game: IGame) => (
         <GameItem key={game.code} {...game} />
       ))}
