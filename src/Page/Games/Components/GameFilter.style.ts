@@ -17,5 +17,4 @@ export const FilterItem = styled.button<FilterItemProps>`
   border: unset;
   background: none;
   font-weight: ${(props) => (props.active === "true" ? "bold" : "200")};
-  font-size: 1rem;
 `;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IGame } from "../@types";
 import Button from "Shared/Button/Button";
 import { GameItemContainer, GameItemImgContainer } from "./Game.style";
-import ChevronIcon from "Shared/SVGs/ChevronIvon";
+import ChevronIcon from "Shared/SVGs/ChevronIcon";
 import { games } from "Constants/games";
 import { findKeyByValue } from "Helpers/findKeyByValue";
 

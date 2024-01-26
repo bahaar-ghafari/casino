@@ -7,4 +7,5 @@ export const HeaderContainer = styled.div`
   gap: 16px;
   align-items: center;
   color: ${theme.dark};
+  margin-bottom: 1rem;
 `;

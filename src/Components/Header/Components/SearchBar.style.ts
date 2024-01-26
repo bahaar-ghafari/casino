@@ -17,4 +17,5 @@ export const SearchInput = styled.input`
   border-radius: 100%;
   outline: none;
   flex-grow: 1;
+  font-size: .75rem;
 `;

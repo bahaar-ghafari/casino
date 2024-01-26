@@ -4,6 +4,7 @@ import Button from "Shared/Button/Button";
 import { useAuthStore } from "stores/authStore";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "Constants/routes";
+import LogoIcon from "Shared/SVGs/LogoIcon";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -12,11 +13,12 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const handleLogin = async () => {
     const result = await login(username, password);
-    if (result.status === 'success') navigate(RoutePaths.Home);
+    if (result.status === "success") navigate(RoutePaths.Home);
   };
 
   return (
     <Container>
+      <LogoIcon />
       <FormContainer>
         <Label>Username</Label>
         <Input

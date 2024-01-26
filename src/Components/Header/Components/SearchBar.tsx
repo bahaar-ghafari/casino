@@ -1,5 +1,5 @@
 import React from "react";
-import SearchIconSVG from "Shared/SVGs/SearchIconSVG";
+import SearchIcon from "Shared/SVGs/SearchIcon";
 import { SearchContainer, SearchInput } from "./SearchBar.style";
 import useGamesStore from "stores/gamesStore";
 
@@ -16,7 +16,7 @@ export const SearchBar: React.FC = () => {
         value={searchQuery}
         onChange={handleSearch}
       />
-      <SearchIconSVG />
+      <SearchIcon />
     </SearchContainer>
   );
 };
