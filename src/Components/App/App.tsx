@@ -4,7 +4,7 @@ import { SWRConfig } from "swr";
 import { BrowserRouter, Navigate } from "react-router-dom";
 import ComeonRoutes from "Components/Routings/ComeonRoutes";
 import { RoutePaths } from "Constants/routes";
-import { getUserData } from "Helpers/getUserData";
+import getUserData from "Helpers/getUserData";
 import { useAuthStore } from "stores/authStore";
 
 function App() {

@@ -3,7 +3,7 @@ import SearchIcon from "Shared/icons/SearchIcon";
 import { SearchContainer, SearchInput } from "./SearchBar.style";
 import useGamesStore from "stores/gamesStore";
 
-export const SearchBar: React.FC = () => {
+const SearchBar: React.FC = () => {
   const { searchQuery, setSearchQuery } = useGamesStore();
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);

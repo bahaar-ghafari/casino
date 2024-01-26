@@ -5,9 +5,9 @@ import { ProfileContainer, ProfileImage, ProfileInfo } from "./Profile.style";
 import { useAuthStore } from "stores/authStore";
 import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "Constants/routes";
-import { getUserData } from "Helpers/getUserData";
+import getUserData from "Helpers/getUserData";
 
-export const Profile: React.FC = () => {
+const Profile: React.FC = () => {
   const { logout } = useAuthStore();
   const navigate = useNavigate();
   const user = useAuthStore().user || getUserData();
