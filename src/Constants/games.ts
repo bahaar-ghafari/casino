@@ -19,9 +19,9 @@ export const games: GameSource = {
 };
 
 export enum GameNameToCode {
-  "Festing Fox" = "FeastingFox",
-  "Book Of Inferno" = "BookOfInferno94",
-  "Warp Wreckers" = "WarpWreckers",
-  "Reno 7's" = "RenoSevens",
-  "Scatter Monsters" = "ScatterMonsters",
+  "Festing Fox" = "feastingfox",
+  "Book Of Inferno" = "bookofinferno94",
+  "Warp Wreckers" = "warpwreckers",
+  "Reno 7's" = "renosevens",
+  "Scatter Monsters" = "scattermonsters",
 }

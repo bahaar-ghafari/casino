@@ -1,5 +1,6 @@
 // src/components/Routes.tsx
 import { RoutePaths } from "Constants/routes";
+import Game from "Page/Game/Game";
 import Games from "Page/Games/container/Games";
 import LoginPage from "Page/LoginPage/Login";
 import { Route, Routes } from "react-router-dom";
@@ -9,7 +10,7 @@ const ComeonRoutes = () => {
     <Routes>
       <Route path={RoutePaths.Login} element={<LoginPage />} />
       <Route path={RoutePaths.Home} element={<Games />} />
-      {/* <Route path={RoutePaths.Game} element={Game} /> */}
+      <Route path={RoutePaths.Game} element={<Game />} />
     </Routes>
   );
 };

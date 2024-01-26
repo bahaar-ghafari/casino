@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { IGame } from "../@types";
 import Button from "Shared/Button/Button";
 import { GameItemContainer, GameItemImgContainer } from "./Game.style";
 import ChevronIcon from "Shared/SVGs/ChevronIcon";
-import { games } from "Constants/games";
 import { findKeyByValue } from "Helpers/findKeyByValue";
+import useGamesStore from "stores/gamesStore";
+import { useNavigate } from "react-router-dom";
+import { RoutePaths } from "Constants/routes";
 
-const Game: React.FC<IGame> = ({ name, description, icon }) => {
-  const [selectedGame, setSelectedGame] = useState<string | null>(null);
+const GameItem: React.FC<IGame> = ({ name, description, icon }) => {
+  const { setSelectedGame } = useGamesStore();
+  const navigate = useNavigate();
 
   const launchGame = (name: string) => {
     setSelectedGame(findKeyByValue(name));
+    navigate(RoutePaths.Game)
   };
   return (
     <GameItemContainer>
@@ -28,18 +32,8 @@ const Game: React.FC<IGame> = ({ name, description, icon }) => {
         </Button>
         <div id="game-launch"></div>
       </div>
-      {selectedGame && (
-        <iframe
-          title={`Game: ${selectedGame}`}
-          src={games[selectedGame]?.src}
-          frameBorder="0"
-          width="640px"
-          height="480px"
-          scrolling="no"
-        />
-      )}
     </GameItemContainer>
   );
 };
 
-export default Game;
+export default GameItem;

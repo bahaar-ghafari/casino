@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { IGame } from "../@types";
-import Game from "./Game";
+import GameItem from "./GameItem";
 import useGamesStore from "stores/gamesStore";
 import useSWR from "swr";
 import { getGames } from "Services/gameService";
@@ -25,7 +25,7 @@ const GameList: React.FC = () => {
         Games
       </div>
       {filteredGames?.map((game: IGame) => (
-        <Game key={game.code} {...game} />
+        <GameItem key={game.code} {...game} />
       ))}
     </div>
   );
